@@ -17,53 +17,52 @@ public class Team extends Participant {
         name = " ";
         players = new Player[4];
     }
-
     public Player[] getPlayers()
     {
         return players;
     }
-
     public void setP(Player[] players)
     {
         this.players = players;
     }
 
-    public void addPlayer(Player p) throws FullTeamException {
-
+    public void addPlayer(Player p) throws FullTeamException
+    {
         Scanner sc = new Scanner(System.in);
 
         if (playersInTeam > 5) {
-            System.out.println("The team full");
-        }
 
+            throw new FullTeamException("The team is full");
+        }
         else {
             /*players[playersInTeam] = p;
             playersInTeam++;*/
+            for (int i = 0; i < players.length; i++) {
 
-            if (players.length < 5) {
-                for (int i = 0; i < players.length; i++) {
-                    System.out.println("Enter player " + (i + 1));
+                System.out.println("Enter player " + (i + 1));
 
-                    System.out.println("Enter the name :");
-                    String name = sc.nextLine();
+                System.out.println("Enter the name :");
+                String name = sc.nextLine();
 
-                    System.out.println("Enter the level :");
-                    int level = sc.nextInt();
+                System.out.println("Enter the level :");
+                int level = sc.nextInt();
 
-                    System.out.println("Enter the ranking :");
-                    float ranking = sc.nextFloat();
+                System.out.println("Enter the ranking :");
+                float ranking = sc.nextFloat();
 
-                    players[i] = new Player(name, level, ranking);
-                }
+                players[i] = new Player(name, level, ranking);
             }
         }
     }
     @Override
     public String toString() {
+
         String result = "";
+
         for (Player player : players) {
             result += player.toString() + "\n";
         }
+
         return "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - " + result;
     }
 }
