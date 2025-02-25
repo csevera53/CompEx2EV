@@ -8,6 +8,27 @@ import java.util.Scanner;
 
 public class Main
 {
+    public static void FindTeams(Team [] t)
+    {
+        Scanner sc = new Scanner(System.in);
+        boolean found = false;
+        System.out.println("Introduce a team name: ");
+        String teamName = sc.nextLine();
+
+        for (int i = 0; i < t.length; i++)
+        {
+            if (t[i].getName().equals(teamName))
+            {
+                found = true;
+                System.out.println(t[i]);
+            }
+
+            else {
+                found = false;
+                System.out.println("Team's name not found");
+            }
+        }
+    }
     public static void Menu() {
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
@@ -42,6 +63,7 @@ public class Main
                 case "6":
                     break;
                 case "7":
+                    //FindTeams(t);
                     break;
                 case "8":
                     break;
@@ -59,6 +81,7 @@ public class Main
     public static void main(String[] args) throws FullTeamException
     {
         Scanner sc = new Scanner(System.in);
+        Menu();
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
 
