@@ -9,6 +9,6 @@ public class IndividualTournament extends Tournament
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Individual" + super.toString();
     }
 }
