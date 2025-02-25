@@ -5,6 +5,7 @@ import tournament.data.*;
 import tournament.comparator.TournamentComparatorByName;
 
 import java.util.Arrays;
+import java.util.IllegalFormatCodePointException;
 
 public class TournamentManager {
 
@@ -45,7 +46,7 @@ public class TournamentManager {
                 new Team("G2", new Player[]{players[0], players[1], players[2], players[3]}),
                 new Team("Heretics", new Player[]{players[4], players[5], players[6], players[7]}),
                 new Team("T1", new Player[]{players[8], players[9], players[10], players[11]}),
-                new Team("Koi", new Player[]{players[12], players[13], players[14], players[15]})
+                new Team("Koi", new Player[]{players[12], players[13], players[14], players[15]}),
         };
 
         tournaments = new Tournament[3];
@@ -72,20 +73,46 @@ public class TournamentManager {
         matches[11] = new Match(tournaments[2],teams[0],players[2]);
     }
     public Player findPlayer(String username){
-        Player foundPlayer = null;
+        /*Player foundPlayer = null;
         for(Player p : players){
             if(players.equals(username)){
                 foundPlayer = new Player(p.getName(),p.getLevel(),p.getRanking());
             }
         }
+        return foundPlayer;*/
+
+        //OTRA FORMA
+        Player foundPlayer = null;
+
+        for (Player p : players)
+        {
+            if (p.getName().equals(username))
+            {
+                return p;
+            }
+        }
+
         return foundPlayer;
     }
     //No funciona :)
-    public Team findTeam(String teamName){
-        Team foundTeam = null;
+    public Team findTeam(String teamName)
+    {
+       /* Team foundTeam = null;
         for(Team t : teams){
             if(teams.equals(teamName)){
                 foundTeam = new Team(t.getName(),t.getPlayers());
+            }
+        }
+        return foundTeam;*/
+
+        //OTRA FORMA
+        Team foundTeam = null;
+
+        for (Team t : teams)
+        {
+            if (t.getName().equals(teamName))
+            {
+                return t;
             }
         }
         return foundTeam;
