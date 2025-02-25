@@ -58,8 +58,9 @@ public class Main
     }
     public static void main(String[] args) throws FullTeamException
     {
-        Menu();
-
+        Scanner sc = new Scanner(System.in);
+        TournamentManager tournamentManager = new TournamentManager();
+        tournamentManager.initialize();
 
         Player p = new Player();
         Team t = new Team();

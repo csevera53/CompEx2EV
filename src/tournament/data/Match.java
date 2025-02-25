@@ -8,7 +8,7 @@ public class Match
 
     String result;
 
-    public Match(Tournament at, Participant participant1, Participant participant2, String result)
+    public Match(Tournament at, Participant participant1, Participant participant2)
     {
         this.at = at;
         this.participant1 = participant1;
