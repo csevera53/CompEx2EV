@@ -14,26 +14,26 @@ public class TournamentManager {
     public void initialize(){
          players = new Player[]{
 
-            new Player("Sheila Rodríguez", 200, 14f),
-            new Player("Inés Pérez", 210, 13f),
-            new Player("Carlos Severá", 198, 53f),
-            new Player("Mari Chelo", 203, 39f),
-            new Player("Nacho Cabanes", 207, 3f),
-            new Player("José Manuel Fuster", 195, 20f),
-            new Player("Virginia Checa", 190, 32f),
-            new Player("Roberto Carvalho", 193, 41f),
-            new Player("Carmela Souza", 202, 15f),
-            new Player("Giovanna Dos Santos", 200, 18f),
-            new Player("Yoshida Ramen", 190, 19f),
-            new Player("Kawasaki Reguetunin", 201, 2f),
-            new Player("Aleksandr Petrov", 198, 45f),
-            new Player("Hiroshi Tanaka", 202, 48f),
-            new Player("Santiago Fernández", 195, 42f),
-            new Player("Elena Dimitrova", 210, 49f),
-            new Player("Jonathan O'Connor", 205, 46f),
-            new Player("Fatima Al-Mansouri", 200, 47f),
-            new Player("Kwame Mensah", 197, 43f),
-            new Player("Isabella Conti", 203, 44f)
+            new Player("Sheila Rodríguez", 87, 14f),
+            new Player("Inés Pérez", 89, 13f),
+            new Player("Carlos Severá", 88, 53f),
+            new Player("Mari Chelo", 90, 39f),
+            new Player("Nacho Cabanes", 99, 3f),
+            new Player("José Manuel Fuster", 94, 20f),
+            new Player("Virginia Checa", 98, 32f),
+            new Player("Roberto Carvalho", 94, 41f),
+            new Player("Carmela Souza", 94, 15f),
+            new Player("Giovanna Dos Santos", 100, 18f),
+            new Player("Yoshida Ramen", 89, 19f),
+            new Player("Kawasaki Reguetunin", 97, 2f),
+            new Player("Aleksandr Petrov", 97, 45f),
+            new Player("Hiroshi Tanaka", 99, 48f),
+            new Player("Santiago Fernández", 95, 42f),
+            new Player("Elena Dimitrova", 97, 49f),
+            new Player("Jonathan O'Connor", 96, 46f),
+            new Player("Fatima Al-Mansouri", 100, 47f),
+            new Player("Kwame Mensah", 90, 43f),
+            new Player("Isabella Conti", 94, 44f)
         };
 
         teams = new Team[]{
@@ -66,4 +66,23 @@ public class TournamentManager {
         matches[10] = new Match(tournaments[2],teams[2],teams[1],"");
         matches[11] = new Match(tournaments[2],teams[0],players[2],"");
     }
+    public Player findPlayer(String username){
+        Player foundPlayer = null;
+        for(Player p : players){
+            if(players.equals(username)){
+                foundPlayer = new Player(p.getName(),p.getLevel(),p.getRanking());
+            }
+        }
+        return foundPlayer;
+    }
+    public Team findTeam(String teamName){
+        Team foundTeam = null;
+        for(Team t : teams){
+            if(teams.equals(teamName)){
+                foundTeam = new Team(t.getName(),t.getPlayers());
+            }
+        }
+        return foundTeam;
+    }
+
 }
