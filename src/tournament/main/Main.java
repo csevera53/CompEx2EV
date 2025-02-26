@@ -1,8 +1,11 @@
 package tournament.main;
+import tournament.data.Match;
 import tournament.data.Player;
 import tournament.data.Team;
 import tournament.exceptions.FullTeamException;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main
@@ -29,12 +32,29 @@ public class Main
         }
     }*/
 
+    public static void MatchedOrderedByTournamentName(TournamentManager match)
+    {
+        Arrays.sort(match.matches, new Comparator<Match>() {
+            @Override
+            public int compare(Match m1, Match m2) {
+                return m1.getAt().getName().compareTo(m2.getAt().getName());
+            }
+        });
+
+        System.out.println("Matched ordered");
+
+        for (Match m : match.matches)
+        {
+            System.out.println(m);
+        }
+    }
+
     public static void Menu() throws FullTeamException {
 
         Scanner sc = new Scanner(System.in);
         Team t = new Team();
         Player p = new Player();
-        TournamentManager tm = new TournamentManager();
+        TournamentManager tournamentManager = new TournamentManager();
         String username = " ";
 
         boolean exit = false;
@@ -66,18 +86,19 @@ public class Main
                     t.addPlayer(p);
                     break;
                 case "5":
-                    tm.findPlayer(username);
+                    tournamentManager.findPlayer(username);
                     break;
                 case "6":
-                    tm.findTeam(username);
+                    tournamentManager.findTeam(username);
                     break;
                 case "7":
                     System.out.println("Enter the name of a team: ");
                     String teamName = sc.nextLine();
 
-                    tm.findTeam(teamName);
+                    tournamentManager.findTeam(teamName);
                     break;
                 case "8":
+                    MatchedOrderedByTournamentName(tournamentManager);
                     break;
                 case "9":
                     break;
