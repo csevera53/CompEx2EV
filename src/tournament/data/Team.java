@@ -67,9 +67,9 @@ public class Team extends Participant {
 
         String result = "";
 
-        for (Player player : players) {
+ /*        for (Player player : players) {
             result += player.toString() + "\n";
-        }
+        }*/
 
         return "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - " + result;
     }

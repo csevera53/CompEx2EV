@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static void FindTeams(Team [] t)
+    /*public static void FindTeams(Team [] t)
     {
         Scanner sc = new Scanner(System.in);
         boolean found = false;
@@ -28,12 +28,13 @@ public class Main
                 System.out.println("Team's name not found");
             }
         }
-    }
-    public static void Menu() {
-        Scanner sc = new Scanner(System.in);
-        boolean exit = false;
+    }*/
 
-        while (!exit) {
+
+    public static void Menu() {
+       // Scanner sc = new Scanner(System.in);
+
+        //while (!exit) {
             System.out.println("""
                     1.- View available tournaments ordered by name
                     2.-View players information ordered by ranking and name
@@ -45,50 +46,56 @@ public class Main
                     8.-Show all the matches ordered by tournament name
                     9.-Update the result of the matches pending
                     10.-Exit""");
-
-            System.out.println("Enter an option : ");
-            String option = sc.nextLine();
-
-            switch (option) {
-                case "1":
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-                case "6":
-                    break;
-                case "7":
-                    //FindTeams(t);
-                    break;
-                case "8":
-                    break;
-                case "9":
-                    break;
-                case "10":
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Incorrect option, try again : ");
-                    break;
-            }
-        }
+        //}
     }
     public static void main(String[] args) throws FullTeamException
     {
         Scanner sc = new Scanner(System.in);
+        boolean exit = false;
+
+        Menu();
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
 
-        System.out.println(tournamentManager.findPlayer("Carlos Severá"));
-        System.out.println(tournamentManager.findTeam("G2"));
+        //System.out.println(tournamentManager.findPlayer("Carlos Severá"));
+        //System.out.println(tournamentManager.findTeam("G2"));
 
         Player p = new Player();
         Team t = new Team();
+
+        System.out.println("Enter an option : ");
+        String option = sc.nextLine();
+
+        switch (option) {
+            case "1":
+                break;
+            case "2":
+                break;
+            case "3":
+                break;
+            case "4":
+                break;
+            case "5":
+                break;
+            case "6":
+                break;
+            case "7":
+                System.out.println("Enter the name of a team: ");
+                String teamName = sc.nextLine();
+
+                tournamentManager.findTeam(teamName);
+                break;
+            case "8":
+                break;
+            case "9":
+                break;
+            case "10":
+                exit = true;
+                break;
+            default:
+                System.out.println("Incorrect option, try again : ");
+                break;
+        }
 
         try
         {

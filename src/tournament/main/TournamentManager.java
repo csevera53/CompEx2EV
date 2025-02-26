@@ -75,21 +75,58 @@ public class TournamentManager {
     }
 
     public Player findPlayer(String username){
-        Player foundPlayer = null;
+        /*Player foundPlayer = null;
         for(Player p : players){
             if(p.getName().equals(username)){
                 foundPlayer = new Player(p.getName(),p.getLevel(),p.getRanking());
             }
         }
+        return foundPlayer;*/
+
+        //OTRA FORMA
+
+        Player foundPlayer = null;
+
+        for (Player p : players)
+        {
+            if (p.getName().equals(username))
+            {
+                System.out.println("Player's name found.");
+                return p;
+            }
+
+            else {
+                System.out.println("Player's name not found.");
+            }
+        }
+
         return foundPlayer;
     }
 
     public Team findTeam(String teamName)
     {
-        Team foundTeam = null;
+        /*Team foundTeam = null;
         for(Team t : teams){
             if(t.getName().equals(teamName)){
                 foundTeam = new Team(t.getName(),t.getPlayers());
+            }
+        }
+        return foundTeam;*/
+
+        //OTRA FORMA
+
+        Team foundTeam = null;
+
+        for (Team t : teams)
+        {
+            if (t.getName().equals(teamName))
+            {
+                System.out.println("Team's name found");
+                return t;
+            }
+
+            else {
+                System.out.println("Team's name not found");
             }
         }
         return foundTeam;
