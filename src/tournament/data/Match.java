@@ -5,7 +5,6 @@ public class Match
     Tournament at;
     Participant participant1;
     Participant participant2;
-
     String result;
 
     public Match(Tournament at, Participant participant1, Participant participant2)
