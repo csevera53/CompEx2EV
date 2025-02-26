@@ -81,9 +81,11 @@ public class Main
     public static void main(String[] args) throws FullTeamException
     {
         Scanner sc = new Scanner(System.in);
-        Menu();
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
+
+        System.out.println(tournamentManager.findPlayer("Carlos Severá"));
+        System.out.println(tournamentManager.findTeam("G2"));
 
         Player p = new Player();
         Team t = new Team();

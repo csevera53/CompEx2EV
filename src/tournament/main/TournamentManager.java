@@ -1,6 +1,7 @@
 package tournament.main;
 import tournament.comparator.PlayerComparatorByRanking;
 //import tournament.comparator.TeamComparatorByRanking;
+import tournament.comparator.TeamComparatorByRanking;
 import tournament.data.*;
 import tournament.comparator.TournamentComparatorByName;
 
@@ -70,49 +71,25 @@ public class TournamentManager {
         matches[8] = new Match(tournaments[2],teams[0],teams[1]);
         matches[9] = new Match(tournaments[2],teams[2],teams[3]);
         matches[10] = new Match(tournaments[2],teams[2],teams[1]);
-        matches[11] = new Match(tournaments[2],teams[0],players[2]);
+        matches[11] = new Match(tournaments[2],teams[0],teams[2]);
     }
+
     public Player findPlayer(String username){
-        /*Player foundPlayer = null;
+        Player foundPlayer = null;
         for(Player p : players){
-            if(players.equals(username)){
+            if(p.getName().equals(username)){
                 foundPlayer = new Player(p.getName(),p.getLevel(),p.getRanking());
             }
         }
-        return foundPlayer;*/
-
-        //OTRA FORMA
-        Player foundPlayer = null;
-
-        for (Player p : players)
-        {
-            if (p.getName().equals(username))
-            {
-                return p;
-            }
-        }
-
         return foundPlayer;
     }
-    //No funciona :)
+
     public Team findTeam(String teamName)
     {
-       /* Team foundTeam = null;
-        for(Team t : teams){
-            if(teams.equals(teamName)){
-                foundTeam = new Team(t.getName(),t.getPlayers());
-            }
-        }
-        return foundTeam;*/
-
-        //OTRA FORMA
         Team foundTeam = null;
-
-        for (Team t : teams)
-        {
-            if (t.getName().equals(teamName))
-            {
-                return t;
+        for(Team t : teams){
+            if(t.getName().equals(teamName)){
+                foundTeam = new Team(t.getName(),t.getPlayers());
             }
         }
         return foundTeam;
@@ -123,19 +100,16 @@ public class TournamentManager {
         }
     }
     public void showPlayerRanking(){
-        PlayerComparatorByRanking Pc = new PlayerComparatorByRanking();
-        Pc.sortByRanking(players);
+        Arrays.sort(players,new PlayerComparatorByRanking());
         for(Player player : players){
             System.out.println(player);
         }
     }
 
-    /*public void showTeamRanking(){
-        TeamComparatorByRanking Tc = new TeamComparatorByRanking();
-
-        Tc.sortByRanking(teams);
+    public void showTeamRanking(){
+        Arrays.sort(teams,new TeamComparatorByRanking());
         for(Team t:teams){
             System.out.println(t);
         }
-    }*/
+    }
 }

@@ -1,4 +1,4 @@
-/*package tournament.comparator;
+package tournament.comparator;
 
 import tournament.data.Team;
 import tournament.data.Player;
@@ -15,4 +15,4 @@ public class TeamComparatorByRanking implements Comparator<Team>{
         Arrays.sort(teams,new TeamComparatorByRanking());
     }
 
-}*/
+}

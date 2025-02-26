@@ -18,13 +18,13 @@ public class Team extends Participant {
         players = new Player[4];
     }
     //Total ranking para el team Comparator
-    /*public float getTotalRanking(){
+    public float getTotalRanking(){
         float total = 0;
-        for(Player player : t.getPlayers()){
+        for(Player player : getPlayers()){
             total += player.getRanking();
         }
         return total;
-    }*/
+    }
     public Player[] getPlayers()
     {
         return players;
