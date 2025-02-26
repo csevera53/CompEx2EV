@@ -94,12 +94,7 @@ public class TournamentManager {
                 System.out.println("Player's name found.");
                 return p;
             }
-
-            else {
-                System.out.println("Player's name not found.");
-            }
         }
-
         return foundPlayer;
     }
 
