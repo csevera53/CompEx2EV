@@ -27,36 +27,33 @@ public class Team extends Participant {
         this.players = players;
     }
 
-    public void addPlayer(Player p) throws FullTeamException
-    {
+    public Player[] addPlayer(Player p) throws FullTeamException {
+
         Scanner sc = new Scanner(System.in);
 
-        if (playersInTeam > 5) {
+        for(int i = 0; i < players.length; i++) {
+            if (playersInTeam < 5) {
+                System.out.println("Enter player " + (i + 1));
 
-            throw new FullTeamException("The team is full");
-        }
-        else {
-            while(playersInTeam < 5)
-            {
-                for (int i = 0; i < players.length; i++) {
+                System.out.println("Enter the name :");
+                String name = sc.next();
 
-                    System.out.println("Enter player " + (i + 1));
+                System.out.println("Enter the level :");
+                int level = sc.nextInt();
 
-                    System.out.println("Enter the name :");
-                    String name = sc.nextLine();
+                System.out.println("Enter the ranking :");
+                float ranking = sc.nextFloat();
 
-                    System.out.println("Enter the level :");
-                    int level = sc.nextInt();
+                players[i] = new Player(name, level, ranking);
 
-                    System.out.println("Enter the ranking :");
-                    float ranking = sc.nextFloat();
-
-                    players[i] = new Player(name, level, ranking);
-                 }
+                System.out.println("Player added correctly to the team");
+            }
+            else {
+                throw new FullTeamException("The team is full");
             }
         }
+        return players;
     }
-
     //Total ranking para el team Comparator
     public float getTotalRanking(){
         float total = 0;

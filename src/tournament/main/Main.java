@@ -11,6 +11,22 @@ import java.util.Scanner;
 
 public class Main
 {
+    public static void fullTeam(Player [] players) throws FullTeamException {
+        Team t = new Team();
+        Player p  = new Player();
+
+        if(players.length >= 5)
+        {
+            throw new FullTeamException("The team is full !");
+        }
+    }
+    public static void showTeam(Team team)
+    {
+        for(Player p : team.getPlayers())
+        {
+            System.out.println(p);
+        }
+    }
     public static void Menu()
     {
         System.out.println("""
@@ -28,7 +44,7 @@ public class Main
     public static void main(String[] args) throws FullTeamException
     {
         Team t = new Team();
-        Player p = new Player();
+        Player p  = new Player();
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
         String username = " ";
@@ -50,7 +66,15 @@ public class Main
                 case "3":
                     break;
                 case "4":
-                    t.addPlayer(p);
+                    fullTeam(t.getPlayers());
+                    try{
+                        t.addPlayer(p);
+                        showTeam(t);
+                    }
+                    catch (FullTeamException e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case "5":
                     tournamentManager.findPlayer(username);
