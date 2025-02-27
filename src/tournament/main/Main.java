@@ -60,6 +60,7 @@ public class Main
 
             switch (option) {
                 case "1":
+
                     //Comparator
                     tournamentManager.OrderTournamentsByName();
 
@@ -86,6 +87,7 @@ public class Main
                      tournamentManager.OrderedPlayerInformationByRankigAndName();
                     break;
                 case "3":
+
                     //Comparator
                     tournamentManager.showTeamRanking();
 
