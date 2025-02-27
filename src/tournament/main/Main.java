@@ -46,6 +46,7 @@ public class Main
         Team t = new Team();
         Player p = new Player();
         TournamentManager tournamentManager = new TournamentManager();
+        tournamentManager.initialize();
         String username = " ";
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
@@ -91,7 +92,6 @@ public class Main
                     break;
             }
         }
-        tournamentManager.initialize();
         //System.out.println(tournamentManager.findPlayer("Carlos Severá"));
         //System.out.println(tournamentManager.findTeam("G2"));
     }

@@ -4,14 +4,6 @@ public class TeamTournament extends Tournament
 {
     int playersPerTeam;
 
-    public int getPlayersPerTeam() {
-        return playersPerTeam;
-    }
-
-    public void setPlayersPerTeam(int playersPerTeam) {
-        this.playersPerTeam = playersPerTeam;
-    }
-
     public TeamTournament(String name, String associatedGame,
                           double prize,int playersPerTeam)
     {
@@ -19,6 +11,13 @@ public class TeamTournament extends Tournament
         this.playersPerTeam = playersPerTeam;
     }
 
+    public int getPlayersPerTeam() {
+        return playersPerTeam;
+    }
+
+    public void setPlayersPerTeam(int playersPerTeam) {
+        this.playersPerTeam = playersPerTeam;
+    }
     @Override
     public String toString() {
          return  "Team" + super.toString()  + "playersPerTeam: " + playersPerTeam + "/5";

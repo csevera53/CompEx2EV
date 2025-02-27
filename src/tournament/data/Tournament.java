@@ -38,6 +38,6 @@ public abstract class Tournament
 
     @Override
     public String toString() {
-        return "Tournament -" + name + " (" + associatedGame + ") "  + "- Prize " + prize;
+        return "Tournament -" + name + " (" + associatedGame + ") "  + "- Prize " + prize + "€";
     }
 }

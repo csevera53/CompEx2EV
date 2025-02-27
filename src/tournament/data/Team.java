@@ -10,20 +10,13 @@ public class Team extends Participant {
     public Team(String name, Player[] players) {
         super(name);
         players = new Player[4];
+        playersInTeam = 0;
     }
 
     public Team() {
         super();
         name = " ";
         players = new Player[4];
-    }
-    //Total ranking para el team Comparator
-    public float getTotalRanking(){
-        float total = 0;
-        for(Player player : getPlayers()){
-            total += player.getRanking();
-        }
-        return total;
     }
     public Player[] getPlayers()
     {
@@ -43,8 +36,6 @@ public class Team extends Participant {
             throw new FullTeamException("The team is full");
         }
         else {
-            /*players[playersInTeam] = p;
-            playersInTeam++;*/
             for (int i = 0; i < players.length; i++) {
 
                 System.out.println("Enter player " + (i + 1));
@@ -62,15 +53,26 @@ public class Team extends Participant {
             }
         }
     }
+
+    //Total ranking para el team Comparator
+    public float getTotalRanking(){
+        float total = 0;
+        for(Player player : getPlayers()){
+            total += player.getRanking();
+        }
+        return total;
+    }
+
     @Override
     public String toString() {
 
-        String result = "";
+        String result = "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - ";
 
- /*        for (Player player : players) {
-            result += player.toString() + "\n";
-        }*/
+        for (int i = 0; i < playersInTeam; i++)
+        {
+            result += "-" + players[i].toString() + "\n";
+        }
 
-        return "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - " + result;
+        return result;
     }
 }
