@@ -21,13 +21,6 @@ public class Main
             throw new FullTeamException("The team is full !");
         }
     }
-    public static void showTeam(Team team)
-    {
-        for(Player p : team.getPlayers())
-        {
-            System.out.println(p);
-        }
-    }
     public static void Menu()
     {
         System.out.println("""
@@ -110,13 +103,11 @@ public class Main
                     }
                     break;
                 case "4":
-                    fullTeam(t.getPlayers());
-                    try{
+
+                    try {
                         t.addPlayer(p);
-                        showTeam(t);
-                    }
-                    catch (FullTeamException e)
-                    {
+
+                    } catch (FullTeamException e) {
                         System.out.println(e.getMessage());
                     }
                     break;

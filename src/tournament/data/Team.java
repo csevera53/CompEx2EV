@@ -36,32 +36,39 @@ public class Team extends Participant {
         this.players = players;
     }
 
-    public Player[] addPlayer(Player p) throws FullTeamException {
+    public void addPlayer(Player p) throws FullTeamException {
 
         Scanner sc = new Scanner(System.in);
 
-        for(int i = 0; i < players.length; i++) {
-            if (playersInTeam < 5) {
-                System.out.println("Enter player " + (i + 1));
+        if(playersInTeam > 5)
+        {
+            throw new FullTeamException("Can't add player, it's full");
+        }
+        else {
+            System.out.println("Enter the name :");
+            String name = sc.next();
 
-                System.out.println("Enter the name :");
-                String name = sc.next();
+            System.out.println("Enter the level :");
+            int level = sc.nextInt();
 
-                System.out.println("Enter the level :");
-                int level = sc.nextInt();
+            System.out.println("Enter the ranking :");
+            float ranking = sc.nextFloat();
 
-                System.out.println("Enter the ranking :");
-                float ranking = sc.nextFloat();
+            p = new Player(name,level,ranking);
 
-                players[i] = new Player(name, level, ranking);
+            System.out.println("Enter the name of the player's team : ");
+            String team = sc.next();
 
+            if(team.equals(getName()))
+            {
+                players[playersInTeam] = p;
+                playersInTeam++;
                 System.out.println("Player added correctly to the team");
             }
             else {
-                throw new FullTeamException("The team is full");
+                System.out.println("Incorrect team name");
             }
         }
-        return players;
     }
 
     @Override

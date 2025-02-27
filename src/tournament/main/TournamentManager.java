@@ -81,6 +81,7 @@ public class TournamentManager {
     public Tournament[] getTournaments(){
         return tournaments;
     }
+
     public Player findPlayer(String username){
 
         Player foundPlayer = null;
