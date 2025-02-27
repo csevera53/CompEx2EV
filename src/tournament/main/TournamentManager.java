@@ -69,7 +69,9 @@ public class TournamentManager {
         matches[10] = new Match(tournaments[2],teams[2],teams[1]);
         matches[11] = new Match(tournaments[2],teams[0],teams[2]);
     }
-
+    public Player[] getPlayers(){
+        return players;
+    }
     public Team[] getTeams(){
         return teams;
     }

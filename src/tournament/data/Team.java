@@ -4,13 +4,13 @@ import tournament.exceptions.FullTeamException;
 import java.util.Scanner;
 
 public class Team extends Participant {
-    Player [] players;
-    int playersInTeam;
+    private Player [] players;
+    private int playersInTeam;
 
     public Team(String name, Player[] players) {
         super(name);
-        players = new Player[4];
-        playersInTeam = 0;
+        this.players = players;
+        playersInTeam = players.length;
     }
 
     public Team() {
@@ -70,7 +70,9 @@ public class Team extends Participant {
         String result = "";
 
         for (int i = 0; i < playersInTeam; i++) {
-            result += players[i].toString() + "\n";
+            if(players[i] != null) {
+                result += players[i].toString() + "\n";
+            }
         }
 
         return "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - " + result;
