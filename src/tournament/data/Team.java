@@ -18,12 +18,21 @@ public class Team extends Participant {
         name = " ";
         players = new Player[4];
     }
-    public Player[] getPlayers()
-    {
+
+    //Total ranking para el team Comparator
+    public float getTotalRanking(){
+        float total = 0;
+        for(Player player : getPlayers()){
+            total += player.getRanking();
+        }
+        total /= players.length;
+        return total;
+    }
+
+    public Player[] getPlayers() {
         return players;
     }
-    public void setP(Player[] players)
-    {
+    public void setP(Player[] players) {
         this.players = players;
     }
 
@@ -54,25 +63,16 @@ public class Team extends Participant {
         }
         return players;
     }
-    //Total ranking para el team Comparator
-    public float getTotalRanking(){
-        float total = 0;
-        for(Player player : getPlayers()){
-            total += player.getRanking();
-        }
-        return total;
-    }
 
     @Override
     public String toString() {
 
-        String result = "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - ";
+        String result = "";
 
-        for (int i = 0; i < playersInTeam; i++)
-        {
-            result += "-" + players[i].toString() + "\n";
+        for (int i = 0; i < playersInTeam; i++) {
+            result += players[i].toString() + "\n";
         }
 
-        return result;
+        return "Team " + name +  " - " + "Members: " + playersInTeam + "/5 - " + result;
     }
 }

@@ -21,29 +21,28 @@ public class TournamentManager {
         initialize();
     }
     public void initialize(){
-         players = new Player[]{
+         players = new Player[25];
 
-            new Player("Sheila Rodríguez", 87, 1400.90f),
-            new Player("Inés Pérez", 89, 1350.70f),
-            new Player("Carlos Severá", 88, 3304.70f),
-            new Player("Mari Chelo", 90, 3905.65f),
-            new Player("Nacho Cabanes", 99, 3000f),
-            new Player("José Manuel Fuster", 94, 2050f),
-            new Player("Virginia Checa", 98, 3207.95f),
-            new Player("Roberto Carvalho", 94, 4100.80f),
-            new Player("Carmela Souza", 94, 1560f),
-            new Player("Giovanna Dos Santos", 100, 1875.50f),
-            new Player("Yoshida Ramen", 89, 1900f),
-            new Player("Kawasaki Reguetunin", 97, 2390.25f),
-            new Player("Aleksandr Petrov", 97, 4500.50f),
-            new Player("Hiroshi Tanaka", 99, 4800.70f),
-            new Player("Santiago Fernández", 95, 4272.25f),
-            new Player("Elena Dimitrova", 97, 4900f),
-            new Player("Jonathan O'Connor", 96, 4650.40f),
-            new Player("Fatima Al-Mansouri", 100, 4750.70f),
-            new Player("Kwame Mensah", 90, 4300.50f),
-            new Player("Isabella Conti", 94, 4425.30f)
-        };
+         players[0]=new Player("Sheila Rodríguez", 87, 1400.90f);
+         players[1]=new Player("Inés Pérez", 89, 1350.70f);
+         players[2]=new Player("Carlos Severá", 88, 3304.70f);
+         players[3]=new Player("Mari Chelo", 90, 3905.65f);
+         players[4]=new Player("Nacho Cabanes", 99, 3000f);
+         players[5]=new Player("José Manuel Fuster", 94, 2050f);
+         players[6]=new Player("Virginia Checa", 98, 3207.95f);
+         players[7]=new Player("Roberto Carvalho", 94, 4100.80f);
+         players[8]=new Player("Carmela Souza", 94, 1560f);
+         players[9]=new Player("Giovanna Dos Santos", 100, 1875.50f);
+         players[10]=new Player("Yoshida Ramen", 89, 1900f);
+         players[11]=new Player("Kawasaki Reguetunin", 97, 2390.25f);
+         players[12]=new Player("Aleksandr Petrov", 97, 4500.50f);
+         players[13]=new Player("Hiroshi Tanaka", 99, 4800.70f);
+         players[14]=new Player("Santiago Fernández", 95, 4272.25f);
+         players[15]=new Player("Elena Dimitrova", 97, 4900f);
+         players[16]=new Player("Jonathan O'Connor", 96, 4650.40f);
+         players[17]=new Player("Fatima Al-Mansouri", 100, 4750.70f);
+         players[18]=new Player("Kwame Mensah", 90, 4300.50f);
+         players[19]=new Player("Isabella Conti", 94, 4425.30f);
 
         teams = new Team[]{
                 new Team("G2", new Player[]{players[0], players[1], players[2], players[3]}),
@@ -76,16 +75,13 @@ public class TournamentManager {
         matches[11] = new Match(tournaments[2],teams[0],teams[2]);
     }
 
+    public Team[] getTeams(){
+        return teams;
+    }
+    public Tournament[] getTournaments(){
+        return tournaments;
+    }
     public Player findPlayer(String username){
-        /*Player foundPlayer = null;
-        for(Player p : players){
-            if(p.getName().equals(username)){
-                foundPlayer = new Player(p.getName(),p.getLevel(),p.getRanking());
-            }
-        }
-        return foundPlayer;*/
-
-        //OTRA FORMA
 
         Player foundPlayer = null;
 
@@ -101,17 +97,7 @@ public class TournamentManager {
         return foundPlayer;
     }
 
-    public Team findTeam(String teamName)
-    {
-        /*Team foundTeam = null;
-        for(Team t : teams){
-            if(t.getName().equals(teamName)){
-                foundTeam = new Team(t.getName(),t.getPlayers());
-            }
-        }
-        return foundTeam;*/
-
-        //OTRA FORMA
+    public Team findTeam(String teamName) {
 
         Team foundTeam = null;
 
@@ -174,6 +160,12 @@ public class TournamentManager {
             System.out.println(matches[i].toString());
         }
     }
+    public void OrderTournamentsByName(){
+        Arrays.sort(tournaments, new TournamentComparatorByName());
+        for(Tournament t : tournaments){
+            System.out.println(t);
+        }
+    }
     public void inputResult()
     {
         Scanner sc = new Scanner(System.in);
@@ -181,7 +173,7 @@ public class TournamentManager {
         {
             if ("Pending".equals(matches[i].getResult()))
             {
-                System.out.println((i + 1) +  matches[i].toString());
+                System.out.println((i + 1) +".-"+  matches[i].toString());
             }
         }
         System.out.println("Select a match to update the result: ");

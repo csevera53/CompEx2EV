@@ -1,7 +1,6 @@
 package tournament.data;
 
 import tournament.comparator.PlayerComparatorByRanking;
-
 import java.util.Arrays;
 
 public class Player extends Participant
@@ -44,6 +43,6 @@ public class Player extends Participant
 
     @Override
     public String toString() {
-        return "Player:" + getName() + " - " + "Level: " + level + " - " + "Ranking: " + ranking;
+        return "Player:" + name + " - " + "Level: " + level + " - " + "Ranking: " + ranking;
     }
 }

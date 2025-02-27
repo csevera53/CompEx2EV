@@ -3,6 +3,7 @@ import tournament.comparator.PlayerComparatorByRanking;
 import tournament.data.Match;
 import tournament.data.Player;
 import tournament.data.Team;
+import tournament.data.Tournament;
 import tournament.exceptions.FullTeamException;
 
 import java.util.Arrays;
@@ -59,11 +60,33 @@ public class Main
 
             switch (option) {
                 case "1":
+                    //Comparator
+                    tournamentManager.OrderTournamentsByName();
+
+                    //Lambda expression
+                    Arrays.sort(tournamentManager.getTournaments(), Comparator.comparing(Tournament::getName));
+                    for(Tournament tournament : tournamentManager.getTournaments()){
+                        System.out.println(tournament);
+                    }
+
+                    //Anonymous Class
+                    Arrays.sort(tournamentManager.getTournaments(), new Comparator<Tournament>() {
+                        @Override
+                        public int compare(Tournament o1, Tournament o2) {
+                            return o1.getName().compareTo(o2.getName());
+                        }
+
+                    });
+                    for(Tournament tour:tournamentManager.getTournaments()){
+                        System.out.println(tour);
+                    }
+
                     break;
                 case "2":
                      tournamentManager.OrderedPlayerInformationByRankigAndName();
                     break;
                 case "3":
+
                     break;
                 case "4":
                     fullTeam(t.getPlayers());
@@ -102,7 +125,5 @@ public class Main
                     break;
             }
         }
-        //System.out.println(tournamentManager.findPlayer("Carlos Severá"));
-        //System.out.println(tournamentManager.findTeam("G2"));
     }
 }
