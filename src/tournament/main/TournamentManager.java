@@ -169,9 +169,9 @@ public class TournamentManager {
 
         System.out.println("Matched ordered");
 
-        for (Match m : matches)
+        for (int i = 0; i < matches.length; i++)
         {
-            System.out.println(m);
+            System.out.println(matches[i].toString());
         }
     }
     public void inputResult()
