@@ -149,6 +149,15 @@ public class TournamentManager {
         }
     }
 
+    public void OrderedPlayerInformationByRankigAndName()
+    {
+        Arrays.sort(players, new PlayerComparatorByRanking());
+        for (Player p : players)
+        {
+            System.out.println(p.toString());
+        }
+    }
+
     public void MatchedOrderedByTournamentName()
     {
         Arrays.sort(matches, new Comparator<Match>() {
@@ -160,26 +169,35 @@ public class TournamentManager {
 
         System.out.println("Matched ordered");
 
-        for (Match m : matches)
+        for (int i = 0; i < matches.length; i++)
         {
-            System.out.println(m);
+            System.out.println(matches[i].toString());
         }
     }
-    public void UpdateMatchedPending()
+    public void inputResult()
     {
         Scanner sc = new Scanner(System.in);
-        for (Match m : matches)
+        for (int i = 0; i < matches.length; i++)
         {
-            if ("Pending".equals(m.getResult()))
+            if ("Pending".equals(matches[i].getResult()))
             {
-                System.out.println("Match in " + m.getAt().getName() + " - " +
-                        m.getParticipant1().getName() +  "vs. " + m.getParticipant2().getName());
-
-                System.out.println("Enter the result: ");
-                String result = sc.nextLine();
-
-                m.setResult(result);
+                System.out.println((i + 1) +  matches[i].toString());
             }
+        }
+        System.out.println("Select a match to update the result: ");
+        int match = sc.nextInt();
+        System.out.println("Enter the result of the match: ");
+        String result = sc.nextLine();
+
+        if (match > 0)
+        {
+            matches[match - 1].setResult(result);
+            System.out.println("Updated");
+        }
+
+        else
+        {
+            System.out.println("No match to update");
         }
     }
 }
