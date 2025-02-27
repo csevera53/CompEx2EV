@@ -1,5 +1,9 @@
 package tournament.data;
 
+import tournament.comparator.PlayerComparatorByRanking;
+
+import java.util.Arrays;
+
 public class Player extends Participant
 {
     protected int level;
@@ -38,6 +42,14 @@ public class Player extends Participant
         this.ranking = ranking;
     }
 
+    public static void OrderedPlayerInformationByRankigAndName(Player [] players)
+    {
+        Arrays.sort(players, new PlayerComparatorByRanking());
+        for (Player p : players)
+        {
+            System.out.println(p.toString());
+        }
+    }
     @Override
     public String toString() {
         return "Player:" + getName() + " - " + "Level: " + level + " - " + "Ranking: " + ranking;

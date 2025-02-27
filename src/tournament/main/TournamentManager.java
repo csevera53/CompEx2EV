@@ -6,7 +6,9 @@ import tournament.data.*;
 import tournament.comparator.TournamentComparatorByName;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.IllegalFormatCodePointException;
+import java.util.Scanner;
 
 public class TournamentManager {
 
@@ -144,6 +146,40 @@ public class TournamentManager {
         Arrays.sort(teams,new TeamComparatorByRanking());
         for(Team t:teams){
             System.out.println(t);
+        }
+    }
+
+    public void MatchedOrderedByTournamentName()
+    {
+        Arrays.sort(matches, new Comparator<Match>() {
+            @Override
+            public int compare(Match m1, Match m2) {
+                return m1.getAt().getName().compareTo(m2.getAt().getName());
+            }
+        });
+
+        System.out.println("Matched ordered");
+
+        for (Match m : matches)
+        {
+            System.out.println(m);
+        }
+    }
+    public void UpdateMatchedPending()
+    {
+        Scanner sc = new Scanner(System.in);
+        for (Match m : matches)
+        {
+            if ("Pending".equals(m.getResult()))
+            {
+                System.out.println("Match in " + m.getAt().getName() + " - " +
+                        m.getParticipant1().getName() +  "vs. " + m.getParticipant2().getName());
+
+                System.out.println("Enter the result: ");
+                String result = sc.nextLine();
+
+                m.setResult(result);
+            }
         }
     }
 }

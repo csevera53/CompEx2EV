@@ -1,4 +1,5 @@
 package tournament.main;
+import tournament.comparator.PlayerComparatorByRanking;
 import tournament.data.Match;
 import tournament.data.Player;
 import tournament.data.Team;
@@ -10,23 +11,6 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static void MatchedOrderedByTournamentName(TournamentManager match)
-    {
-        Arrays.sort(match.matches, new Comparator<Match>() {
-            @Override
-            public int compare(Match m1, Match m2) {
-                return m1.getAt().getName().compareTo(m2.getAt().getName());
-            }
-        });
-
-        System.out.println("Matched ordered");
-
-        for (Match m : match.matches)
-        {
-            System.out.println(m);
-        }
-    }
-
     public static void Menu()
     {
         System.out.println("""
@@ -61,6 +45,7 @@ public class Main
                 case "1":
                     break;
                 case "2":
+                   // p.OrderedPlayerInformationByRankigAndName();
                     break;
                 case "3":
                     break;
@@ -80,9 +65,10 @@ public class Main
                     tournamentManager.findTeam(teamName);
                     break;
                 case "8":
-                    MatchedOrderedByTournamentName(tournamentManager);
+                    tournamentManager.MatchedOrderedByTournamentName();
                     break;
                 case "9":
+                    tournamentManager.UpdateMatchedPending();
                     break;
                 case "10":
                     exit = true;
