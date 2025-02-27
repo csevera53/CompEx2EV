@@ -1,11 +1,7 @@
 package tournament.main;
-import tournament.comparator.PlayerComparatorByRanking;
-import tournament.data.Match;
-import tournament.data.Player;
-import tournament.data.Team;
-import tournament.data.Tournament;
-import tournament.exceptions.FullTeamException;
 
+import tournament.data.*;
+import tournament.exceptions.*;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -66,8 +62,8 @@ public class Main
                     //Anonymous Class
                     Arrays.sort(tournamentManager.getTournaments(), new Comparator<Tournament>() {
                         @Override
-                        public int compare(Tournament o1, Tournament o2) {
-                            return o1.getName().compareTo(o2.getName());
+                        public int compare(Tournament t1, Tournament t2) {
+                            return t1.getName().compareTo(t2.getName());
                         }
 
                     });
@@ -86,7 +82,7 @@ public class Main
 
                     //Lambda expression
                     Arrays.sort(tournamentManager.getTeams(),(t1,t2)->
-                            Float.compare(t1.getTotalRanking(), t2.getTotalRanking()));
+                            Float.compare(t2.getTotalRanking(), t1.getTotalRanking()));
                     for(Team team : tournamentManager.getTeams()){
                         System.out.println(team);
                     }
@@ -94,8 +90,8 @@ public class Main
                     //Anonymous class
                     Arrays.sort(tournamentManager.getTeams(),new Comparator<Team>() {
                         @Override
-                        public int compare(Team o1, Team o2) {
-                            return Float.compare(o1.getTotalRanking(), o2.getTotalRanking());
+                        public int compare(Team t1, Team t2) {
+                            return Float.compare(t2.getTotalRanking(), t1.getTotalRanking());
                         }
                     });
                     for(Team team : tournamentManager.getTeams()){
