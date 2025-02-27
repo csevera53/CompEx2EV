@@ -45,10 +45,11 @@ public class Match
         return result;
     }
 
-    public String setResult(String result)
+    public void setResult(String result)
     {
-        return "Match in " + at.getName() + " - " + participant1.getName() + "vs. " + participant2.getName()
-                + " - " + "Result: " + result;
+        this.result = result;
+        /*return "Match in " + at.getName() + " - " + participant1.getName() + "vs. " + participant2.getName()
+                + " - " + "Result: " + result;*/
     }
 
     @Override

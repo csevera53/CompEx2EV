@@ -177,7 +177,8 @@ public class TournamentManager {
             }
         }
         System.out.println("Select a match to update the result: ");
-        int match = sc.nextInt();
+        String matchS = sc.nextLine();
+        int match = Integer.parseInt(matchS);
         System.out.println("Enter the result of the match: ");
         String result = sc.nextLine();
 

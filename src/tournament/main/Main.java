@@ -86,7 +86,26 @@ public class Main
                      tournamentManager.OrderedPlayerInformationByRankigAndName();
                     break;
                 case "3":
+                    //Comparator
+                    tournamentManager.showTeamRanking();
 
+                    //Lambda expression
+                    Arrays.sort(tournamentManager.getTeams(),(t1,t2)->
+                            Float.compare(t1.getTotalRanking(), t2.getTotalRanking()));
+                    for(Team team : tournamentManager.getTeams()){
+                        System.out.println(team);
+                    }
+
+                    //Anonymous class
+                    Arrays.sort(tournamentManager.getTeams(),new Comparator<Team>() {
+                        @Override
+                        public int compare(Team o1, Team o2) {
+                            return Float.compare(o1.getTotalRanking(), o2.getTotalRanking());
+                        }
+                    });
+                    for(Team team : tournamentManager.getTeams()){
+                        System.out.println(team);
+                    }
                     break;
                 case "4":
                     fullTeam(t.getPlayers());
