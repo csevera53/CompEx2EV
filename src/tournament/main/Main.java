@@ -1,11 +1,7 @@
 package tournament.main;
-import tournament.comparator.PlayerComparatorByRanking;
-import tournament.data.Match;
-import tournament.data.Player;
-import tournament.data.Team;
-import tournament.data.Tournament;
-import tournament.exceptions.FullTeamException;
 
+import tournament.data.*;
+import tournament.exceptions.*;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;

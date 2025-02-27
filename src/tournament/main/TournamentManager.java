@@ -1,21 +1,16 @@
 package tournament.main;
-import tournament.comparator.PlayerComparatorByRanking;
-//import tournament.comparator.TeamComparatorByRanking;
-import tournament.comparator.TeamComparatorByRanking;
-import tournament.data.*;
-import tournament.comparator.TournamentComparatorByName;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.IllegalFormatCodePointException;
-import java.util.Scanner;
+import tournament.data.*;
+import tournament.comparator.*;
+
+import java.util.*;
 
 public class TournamentManager {
 
-    Player[] players;
-    Team[] teams;
-    Tournament[] tournaments;
-    Match[] matches;
+    private Player[] players;
+    private Team[] teams;
+    private Tournament[] tournaments;
+    private Match[] matches;
 
     public TournamentManager() {
         initialize();
