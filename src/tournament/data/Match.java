@@ -47,7 +47,7 @@ public class Match
 
     public String setResult(String result)
     {
-        return "Match in " + at.getName() + " - " + participant1.getName() + "vs. " + participant2.getName()
+        return "Match in " + at.toString() + " - " + participant1.getName() + "vs. " + participant2.getName()
                 + " - " + "Result: " + result;
     }
 }

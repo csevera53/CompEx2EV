@@ -92,6 +92,7 @@ public class TournamentManager {
             if (p.getName().equals(username))
             {
                 System.out.println("Player's name found.");
+                System.out.println(p);
                 return p;
             }
         }
@@ -117,6 +118,7 @@ public class TournamentManager {
             if (t.getName().equals(teamName))
             {
                 System.out.println("Team's name found");
+                System.out.println(t);
                 return t;
             }
 

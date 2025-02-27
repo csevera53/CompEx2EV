@@ -36,20 +36,23 @@ public class Team extends Participant {
             throw new FullTeamException("The team is full");
         }
         else {
-            for (int i = 0; i < players.length; i++) {
+            while(playersInTeam < 5)
+            {
+                for (int i = 0; i < players.length; i++) {
 
-                System.out.println("Enter player " + (i + 1));
+                    System.out.println("Enter player " + (i + 1));
 
-                System.out.println("Enter the name :");
-                String name = sc.nextLine();
+                    System.out.println("Enter the name :");
+                    String name = sc.nextLine();
 
-                System.out.println("Enter the level :");
-                int level = sc.nextInt();
+                    System.out.println("Enter the level :");
+                    int level = sc.nextInt();
 
-                System.out.println("Enter the ranking :");
-                float ranking = sc.nextFloat();
+                    System.out.println("Enter the ranking :");
+                    float ranking = sc.nextFloat();
 
-                players[i] = new Player(name, level, ranking);
+                    players[i] = new Player(name, level, ranking);
+                 }
             }
         }
     }

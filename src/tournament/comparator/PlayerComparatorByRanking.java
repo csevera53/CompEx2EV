@@ -8,7 +8,13 @@ import java.util.Comparator;
 public class PlayerComparatorByRanking implements Comparator<Player> {
     @Override
     public int compare(Player p1, Player p2){
-        return Float.compare(p2.getRanking(), p1.getRanking());
+        int rankingNumber = Float.compare(p2.getRanking(), p1.getRanking());
+
+        if (rankingNumber != 0)
+        {
+            return rankingNumber;
+        }
+        return p1.getName().compareTo(p2.getName());
     }
     public static void sortByRanking(Player[] players) {
         Arrays.sort(players,new PlayerComparatorByRanking());
