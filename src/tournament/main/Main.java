@@ -45,7 +45,7 @@ public class Main
                 case "1":
                     break;
                 case "2":
-                   // p.OrderedPlayerInformationByRankigAndName();
+                     tournamentManager.OrderedPlayerInformationByRankigAndName();
                     break;
                 case "3":
                     break;
@@ -68,7 +68,7 @@ public class Main
                     tournamentManager.MatchedOrderedByTournamentName();
                     break;
                 case "9":
-                    tournamentManager.UpdateMatchedPending();
+                    tournamentManager.inputResult();
                     break;
                 case "10":
                     exit = true;
