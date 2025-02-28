@@ -2,6 +2,7 @@ package tournament.main;
 
 import tournament.data.*;
 import tournament.comparator.*;
+import tournament.exceptions.*;
 
 import java.util.*;
 
@@ -292,6 +293,41 @@ public class TournamentManager {
         }
     }
 
+    //He hecho las excepciones pero no se implementarlas, dan errores
+    public void addPlayerToTeam(Team t) throws FullTeamException, Level1to100, MustBeFloat {
+        Scanner sc = new Scanner(System.in);
+        Player p;
+
+        System.out.println("Enter the name of the player:");
+        String name = sc.nextLine();
+
+
+        System.out.println("Enter the level :");
+        int level = sc.nextInt();
+
+        if(level>=1 && level<=100){
+            System.out.println("Enter the ranking :");
+            String number = sc.next();
+            boolean isFloat = false;
+
+            try{
+                float ranking = Float.parseFloat(number);
+                isFloat = true;
+
+                p = new Player(name, level, ranking);
+                //Falta añadir el jugador al array de jugadores
+                t.addPlayer(p);
+                System.out.println("Player added to the team correctly");
+            }
+            catch(MustBeFloat e) {
+                System.out.println("Must be float");
+            }
+        }
+        else{
+            throw new Level1to100("Error");
+        }
+
+    }
 
 
 }

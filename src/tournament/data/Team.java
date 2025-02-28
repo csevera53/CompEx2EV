@@ -1,76 +1,56 @@
 package tournament.data;
 
-import tournament.exceptions.FullTeamException;
-import java.util.Scanner;
+import tournament.exceptions.*;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Team extends Participant {
     private Player [] players;
     private int playersInTeam;
+    private static final int MAX_PLAYERS = 5;
 
     public Team(String name, Player[] players) {
         super(name);
         this.players = players;
-        playersInTeam = players.length;
+        playersInTeam = 4;
     }
+
 
     public Team() {
         super();
         name = " ";
-        players = new Player[4];
-    }
-
-    //Total ranking para el team Comparator
-    public float getTotalRanking(){
-        float total = 0;
-        for(Player player : getPlayers()){
-            total += player.getRanking();
-        }
-        total /= players.length;
-        return total;
+        players = new Player[5];
     }
 
     public Player[] getPlayers() {
         return players;
     }
-    public void setP(Player[] players) {
+    public void setPlayers(Player[] players) {
         this.players = players;
     }
 
     public void addPlayer(Player p) throws FullTeamException {
+        if(playersInTeam < MAX_PLAYERS){
+            players[playersInTeam] = p;
+            playersInTeam++;
 
-        Scanner sc = new Scanner(System.in);
-
-        if(playersInTeam > 5)
-        {
-            throw new FullTeamException("Can't add player, it's full");
         }
         else {
-            System.out.println("Enter the name :");
-            String name = sc.next();
-
-            System.out.println("Enter the level :");
-            int level = sc.nextInt();
-
-            System.out.println("Enter the ranking :");
-            float ranking = sc.nextFloat();
-
-            p = new Player(name,level,ranking);
-
-            System.out.println("Enter the name of the player's team : ");
-            String team = sc.next();
-
-            if(team.equals(getName()))
-            {
-                players[playersInTeam] = p;
-                playersInTeam++;
-                System.out.println("Player added correctly to the team");
-            }
-            else {
-                System.out.println("Incorrect team name");
-            }
+            throw new FullTeamException("Can't add player, the team is full");
         }
     }
-
+    //Total ranking para el team Comparator
+    public float getTotalRanking(){
+        float total = 0;
+        for(Player player : getPlayers()){
+            if(player != null){
+                total += player.getRanking();
+            }
+        }
+        total /= players.length;
+        return total;
+    }
     @Override
     public String toString() {
 

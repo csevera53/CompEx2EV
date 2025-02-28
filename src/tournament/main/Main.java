@@ -8,15 +8,6 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static void fullTeam(Player [] players) throws FullTeamException {
-        Team t = new Team();
-        Player p  = new Player();
-
-        if(players.length >= 5)
-        {
-            throw new FullTeamException("The team is full !");
-        }
-    }
     public static void Menu()
     {
         System.out.println("""
@@ -31,14 +22,11 @@ public class Main
                     9.-Update the result of the matches pending
                     10.-Exit""");
     }
-    public static void main(String[] args) throws FullTeamException
-    {
+    public static void main(String[] args) throws FullTeamException, Level1to100,MustBeFloat {
         Scanner sc = new Scanner(System.in);
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
 
-        Team t = new Team();
-        Player p = new Player();
         String username;
         boolean exit = false;
         String option;
@@ -85,14 +73,29 @@ public class Main
                     System.out.println();
                     break;
                 case "4":
-                    try {
-                        t.addPlayer(p);
+                    Team t = new Team();
+                    boolean teamFound = false;
+                    System.out.print("In which team do you want to add the player? ");
+                    String name = sc.nextLine();
 
-                    } catch (FullTeamException e) {
-                        System.out.println(e.getMessage());
+                    for(Team team : tournamentManager.getTeams()){
+                        if(team.getName().equals(name)){
+                            teamFound = true;
+                            t.setName(t.getName());
+                            t.setPlayers(team.getPlayers());
+                        }
                     }
+
+                    if(teamFound){
+                        tournamentManager.addPlayerToTeam(t);
+                    }
+                    else {
+                        System.out.println("Team not found");
+                    }
+
                     break;
                 case "5":
+                    Player p = new Player();
                     System.out.println("Select a name to search: ");
                     username = sc.nextLine();
                     p = tournamentManager.findPlayer(username);
