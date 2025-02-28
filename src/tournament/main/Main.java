@@ -106,7 +106,6 @@ public class Main
                     }
                     break;
                 case "4":
-
                     try {
                         t.addPlayer(p);
 
