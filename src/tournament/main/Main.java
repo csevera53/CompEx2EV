@@ -75,15 +75,14 @@ public class Main
                 case "2":
                     //Comparator
                     tournamentManager.OrderedPlayerInformationByRankigAndName();
-
+                    System.out.println();
                      //Lambda expression
                     tournamentManager.ExpressionLambdaOption2();
-
+                    System.out.println();
                     //Anonymous Class
                     tournamentManager.AnonymousExpressionOption2();
                     break;
                 case "3":
-
                     //Comparator
                     tournamentManager.showTeamRanking();
 
@@ -93,7 +92,6 @@ public class Main
                     for(Team team : tournamentManager.getTeams()){
                         System.out.println(team);
                     }
-
                     //Anonymous class
                     Arrays.sort(tournamentManager.getTeams(),new Comparator<Team>() {
                         @Override
@@ -127,7 +125,12 @@ public class Main
                     tournamentManager.findTeam(teamName);
                     break;
                 case "8":
+                    //Comparator
                     tournamentManager.MatchedOrderedByTournamentName();
+                    //Lambda expression
+                    tournamentManager.ExpressionLambdaOption8();
+                    //Anonymoys class
+                    tournamentManager.AnonymousClassOption8();
                     break;
                 case "9":
                     tournamentManager.inputResult();

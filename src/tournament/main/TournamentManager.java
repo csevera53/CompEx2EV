@@ -220,4 +220,34 @@ public class TournamentManager {
             System.out.println(player);
         }
     }
+
+    public void ExpressionLambdaOption8()
+    {
+        Arrays.sort(matches, new Comparator<Match>() {
+            @Override
+            public int compare(Match m1, Match m2) {
+                return m1.getAt().getName().compareTo(m2.getAt().getName());
+            }
+        });
+
+        for (Match match : matches)
+        {
+            System.out.println(match);
+        }
+    }
+
+    public void AnonymousClassOption8()
+    {
+        Arrays.sort(matches, new Comparator<Match>() {
+            @Override
+            public int compare(Match m1, Match m2) {
+                return m1.getAt().getName().compareTo(m2.getAt().getName());
+            }
+        });
+
+        for (Match match : matches)
+        {
+            System.out.println(match);
+        }
+    }
 }
