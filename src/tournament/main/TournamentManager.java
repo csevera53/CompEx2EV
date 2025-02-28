@@ -174,22 +174,28 @@ public class TournamentManager {
                 System.out.println((i + 1) +".-"+  matches[i].toString());
             }
         }
-        System.out.println("Select a match to update the result: ");
-        String matchS = sc.nextLine();
-        int match = Integer.parseInt(matchS);
+
+        int matchNumber = 0;
+
+        while(matchNumber < 1 || matchNumber > matches.length)
+        {
+            System.out.println("Select a match to update the result: ");
+            String matchS = sc.nextLine();
+            matchNumber = Integer.parseInt(matchS);
+
+            if (matchNumber < 1 || matchNumber > matches.length)
+            {
+                System.out.println("Wrong number");
+            }
+        }
+
         System.out.println("Enter the result of the match: ");
         String result = sc.nextLine();
 
-        if (match > 0)
-        {
-            matches[match - 1].setResult(result);
-            System.out.println("Updated");
-        }
 
-        else
-        {
-            System.out.println("No match to update");
-        }
+        matches[matchNumber - 1].setResult(result);
+
+        System.out.println("Updated");
     }
 
     public void ExpressionLambdaOption2()

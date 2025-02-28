@@ -126,8 +126,10 @@ public class Main
                 case "8":
                     //Comparator
                     tournamentManager.MatchedOrderedByTournamentName();
+                    System.out.println();
                     //Lambda expression
                     tournamentManager.ExpressionLambdaOption8();
+                    System.out.println();
                     //Anonymoys class
                     tournamentManager.AnonymousClassOption8();
                     break;
