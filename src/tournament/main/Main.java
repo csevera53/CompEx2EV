@@ -82,6 +82,19 @@ public class Main
                     {
                         System.out.println(player);
                     }
+
+                    //Anonymous Class
+                    Arrays.sort(tournamentManager.getPlayers(), new Comparator<Player>() {
+                        @Override
+                        public int compare(Player p1, Player p2) {
+                            return p1.getName().compareTo(p2.getName());
+                        }
+                    });
+
+                    for (Player player : tournamentManager.getPlayers())
+                    {
+                        System.out.println(player);
+                    }
                     break;
                 case "3":
 
