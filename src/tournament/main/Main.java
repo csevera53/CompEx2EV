@@ -33,19 +33,21 @@ public class Main
     }
     public static void main(String[] args) throws FullTeamException
     {
-        Team t = new Team();
-        Player p  = new Player();
+        Scanner sc = new Scanner(System.in);
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
-        String username = " ";
-        Scanner sc = new Scanner(System.in);
+
+        Team t = new Team();
+        Player p = new Player();
+        String username;
         boolean exit = false;
+        String option;
 
         while(!exit)
         {
             Menu();
             System.out.println("Enter an option : ");
-            String option = sc.nextLine();
+            option = sc.nextLine();
 
             switch (option) {
                 case "1":
@@ -91,9 +93,19 @@ public class Main
                     }
                     break;
                 case "5":
-                    tournamentManager.findPlayer(username);
+                    System.out.println("Select a name to search: ");
+                    username = sc.nextLine();
+                    p = tournamentManager.findPlayer(username);
+                    if(p == null){
+                        System.out.println("Player not found");
+                    }
+                    else {
+                        System.out.println(p);
+                    }
                     break;
                 case "6":
+                    System.out.println("Select a coincidence to search: ");
+                    username = sc.nextLine();
                     tournamentManager.findTeam(username);
                     break;
                 case "7":

@@ -80,19 +80,17 @@ public class TournamentManager {
     }
 
     public Player findPlayer(String username){
+        boolean found = false;
+        Player p = null;
 
-        Player foundPlayer = null;
-
-        for (Player p : players)
+        for (Player player : players)
         {
-            if (p.getName().equals(username))
-            {
-                System.out.println("Player's name found.");
-                System.out.println(p);
-                return p;
+            if (player.getName().equals(username)) {
+                found = true;
+                p=new Player(player.getName(),player.getLevel(),player.getRanking());
             }
         }
-        return foundPlayer;
+        return p;
     }
 
     public Team findTeam(String teamName) {
