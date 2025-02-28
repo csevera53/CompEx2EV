@@ -73,7 +73,15 @@ public class Main
 
                     break;
                 case "2":
+                    //Comparator
                      tournamentManager.OrderedPlayerInformationByRankigAndName();
+
+                     //Lambda expression
+                    Arrays.sort(tournamentManager.getPlayers(), Comparator.comparing(Player::getRanking));
+                    for (Player player : tournamentManager.getPlayers())
+                    {
+                        System.out.println(player);
+                    }
                     break;
                 case "3":
 
