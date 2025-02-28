@@ -81,16 +81,17 @@ public class TournamentManager {
 
     public Player findPlayer(String username){
         boolean found = false;
-        Player p = null;
+        String normalizedName = username.trim().toLowerCase();
 
         for (Player player : players)
         {
-            if (player.getName().equals(username)) {
+            if (player.getName().toLowerCase().contains(normalizedName))
+            {
+                System.out.println(player);
                 found = true;
-                p=new Player(player.getName(),player.getLevel(),player.getRanking());
             }
         }
-        return p;
+        return null;
     }
 
     public Team findTeam(String teamName) {

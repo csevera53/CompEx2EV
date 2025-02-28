@@ -106,7 +106,7 @@ public class Main
                 case "6":
                     System.out.println("Select a coincidence to search: ");
                     username = sc.nextLine();
-                    tournamentManager.findTeam(username);
+                    tournamentManager.findPlayer(username);
                     break;
                 case "7":
                     System.out.println("Enter the name of a team: ");
