@@ -12,16 +12,28 @@ public class Team extends Participant {
 
     public Team(String name, Player[] players) {
         super(name);
-        this.players = players;
-        playersInTeam = 4;
+        this.players = new Player[MAX_PLAYERS];
+        playersInTeam = 0;
+
+        if (players != null)
+        {
+            for (Player player : players)
+            {
+                try{
+                    addPlayer(player);
+                }catch (FullTeamException e){
+                    System.out.println("Error" + e.getMessage());
+                }
+            }
+        }
     }
 
 
-    public Team() {
+    /*public Team() {
         super();
         name = " ";
         players = new Player[5];
-    }
+    }*/
 
     public Player[] getPlayers() {
         return players;
@@ -31,14 +43,21 @@ public class Team extends Participant {
     }
 
     public void addPlayer(Player p) throws FullTeamException {
-        if(playersInTeam < MAX_PLAYERS){
+        /*if(playersInTeam < MAX_PLAYERS){
             players[playersInTeam] = p;
             playersInTeam++;
 
         }
         else {
             throw new FullTeamException("Can't add player, the team is full");
+        }*/
+
+        if (playersInTeam >= MAX_PLAYERS)
+        {
+            throw new FullTeamException("Team is full");
         }
+
+        players[playersInTeam++] = p;
     }
     //Total ranking para el team Comparator
     public float getTotalRanking(){

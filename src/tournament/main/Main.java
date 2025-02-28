@@ -24,16 +24,19 @@ public class Main
     }
     public static void main(String[] args) throws FullTeamException, Level1to100,MustBeFloat {
         Scanner sc = new Scanner(System.in);
+
         TournamentManager tournamentManager = new TournamentManager();
         tournamentManager.initialize();
 
         String username;
-        boolean exit = false;
         String option;
+
+        boolean exit = false;
 
         while(!exit)
         {
             Menu();
+
             System.out.println("Enter an option : ");
             option = sc.nextLine();
 
@@ -73,8 +76,9 @@ public class Main
                     System.out.println();
                     break;
                 case "4":
-                    Team t = new Team();
+                    /*Team t = new Team();
                     boolean teamFound = false;
+                    int position = 0;
                     System.out.print("In which team do you want to add the player? ");
                     String name = sc.nextLine();
 
@@ -91,19 +95,13 @@ public class Main
                     }
                     else {
                         System.out.println("Team not found");
-                    }
+                    }*/
+                    tournamentManager.addNewPlayer();
                     break;
                 case "5":
-                    Player p = new Player();
                     System.out.println("Select a name to search: ");
                     username = sc.nextLine();
-                    p = tournamentManager.findPlayer(username);
-                    if(p == null){
-                        System.out.println("Player not found");
-                    }
-                    else {
-                        System.out.println(p);
-                    }
+                    tournamentManager.findPlayer(username);
                     break;
                 case "6":
                     System.out.println("Select a coincidence to search: ");

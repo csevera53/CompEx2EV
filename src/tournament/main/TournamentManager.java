@@ -4,6 +4,7 @@ import tournament.data.*;
 import tournament.comparator.*;
 import tournament.exceptions.*;
 
+import java.sql.SQLSyntaxErrorException;
 import java.util.*;
 
 public class TournamentManager {
@@ -209,7 +210,7 @@ public class TournamentManager {
     public void ExpressionLambdaOption2()
     {
         Arrays.sort(players, (p1, p2) -> {
-            int ranking = Float.compare(p1.getRanking(), p2.getRanking());
+            int ranking = Float.compare(p2.getRanking(), p1.getRanking());
             return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
         });
 
@@ -257,7 +258,7 @@ public class TournamentManager {
         Arrays.sort(players, new Comparator<Player>() {
             @Override
             public int compare(Player p1, Player p2) {
-                int ranking = Float.compare(p1.getRanking(), p2.getRanking());
+                int ranking = Float.compare(p2.getRanking(), p1.getRanking());
                 return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
             }
         });
@@ -294,7 +295,7 @@ public class TournamentManager {
     }
 
     //He hecho las excepciones pero no se implementarlas, dan errores
-    public void addPlayerToTeam(Team t) throws FullTeamException, Level1to100, MustBeFloat {
+    /*public void addPlayerToTeam(Team t) throws FullTeamException, Level1to100, MustBeFloat {
         Scanner sc = new Scanner(System.in);
         Player p;
 
@@ -327,7 +328,40 @@ public class TournamentManager {
             throw new Level1to100("Error");
         }
 
+    }*/
+
+    public void addNewPlayer()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Player name: ");
+        String playerName = sc.nextLine();
+
+        System.out.println("Level: ");
+        int level = sc.nextInt();
+
+        System.out.println("Rankign: ");
+        float ranking = sc.nextFloat();
+
+        sc.nextLine();
+
+        Player newPlayer = new Player(playerName, level, ranking);
+
+        System.out.println("Enter team name: ");
+        String team = sc.nextLine();
+
+        Team t = findTeam(team);
+
+        if (t == null)
+        {
+            System.out.println("Team not found");
+        }
+
+        try{
+            t.addPlayer(newPlayer);
+            System.out.println("Player added");
+        }catch (FullTeamException e){
+            System.out.println(e.getMessage());
+        }
     }
-
-
 }
