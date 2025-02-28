@@ -20,6 +20,6 @@ public class TeamTournament extends Tournament
     }
     @Override
     public String toString() {
-         return  "Team" + super.toString()  + "playersPerTeam: " + playersPerTeam + "/5";
+         return  " - Team" + super.toString()  + "playersPerTeam: " + playersPerTeam + "/5";
     }
 }

@@ -52,25 +52,13 @@ public class Main
 
                     //Comparator
                     tournamentManager.OrderTournamentsByName();
-
+                    System.out.println();
                     //Lambda expression
-                    Arrays.sort(tournamentManager.getTournaments(), Comparator.comparing(Tournament::getName));
-                    for(Tournament tournament : tournamentManager.getTournaments()){
-                        System.out.println(tournament);
-                    }
-
+                    tournamentManager.ExpressionLambdaOption1();
+                    System.out.println();
                     //Anonymous Class
-                    Arrays.sort(tournamentManager.getTournaments(), new Comparator<Tournament>() {
-                        @Override
-                        public int compare(Tournament t1, Tournament t2) {
-                            return t1.getName().compareTo(t2.getName());
-                        }
-
-                    });
-                    for(Tournament tour:tournamentManager.getTournaments()){
-                        System.out.println(tour);
-                    }
-
+                    tournamentManager.AnonymousClassOption1();
+                    System.out.println();
                     break;
                 case "2":
                     //Comparator
@@ -81,27 +69,18 @@ public class Main
                     System.out.println();
                     //Anonymous Class
                     tournamentManager.AnonymousExpressionOption2();
+                    System.out.println();
                     break;
                 case "3":
                     //Comparator
                     tournamentManager.showTeamRanking();
-
+                    System.out.println();
                     //Lambda expression
-                    Arrays.sort(tournamentManager.getTeams(),(t1,t2)->
-                            Float.compare(t2.getTotalRanking(), t1.getTotalRanking()));
-                    for(Team team : tournamentManager.getTeams()){
-                        System.out.println(team);
-                    }
+                    tournamentManager.ExpressionLambdaOption3();
+                    System.out.println();
                     //Anonymous class
-                    Arrays.sort(tournamentManager.getTeams(),new Comparator<Team>() {
-                        @Override
-                        public int compare(Team t1, Team t2) {
-                            return Float.compare(t2.getTotalRanking(), t1.getTotalRanking());
-                        }
-                    });
-                    for(Team team : tournamentManager.getTeams()){
-                        System.out.println(team);
-                    }
+                    tournamentManager.AnonymousClassOption3();
+                    System.out.println();
                     break;
                 case "4":
                     try {
