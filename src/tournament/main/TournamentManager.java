@@ -191,4 +191,33 @@ public class TournamentManager {
             System.out.println("No match to update");
         }
     }
+
+    public void ExpressionLambdaOption2()
+    {
+        Arrays.sort(players, (p1, p2) -> {
+            int ranking = Float.compare(p1.getRanking(), p2.getRanking());
+            return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
+        });
+
+        for (Player player : players)
+        {
+            System.out.println(player);
+        }
+    }
+
+    public void AnonymousExpressionOption2()
+    {
+        Arrays.sort(players, new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                int ranking = Float.compare(p1.getRanking(), p2.getRanking());
+                return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
+            }
+        });
+
+        for (Player player : players)
+        {
+            System.out.println(player);
+        }
+    }
 }

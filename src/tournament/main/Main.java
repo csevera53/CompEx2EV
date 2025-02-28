@@ -74,27 +74,13 @@ public class Main
                     break;
                 case "2":
                     //Comparator
-                     tournamentManager.OrderedPlayerInformationByRankigAndName();
+                    tournamentManager.OrderedPlayerInformationByRankigAndName();
 
                      //Lambda expression
-                    Arrays.sort(tournamentManager.getPlayers(), Comparator.comparing(Player::getRanking));
-                    for (Player player : tournamentManager.getPlayers())
-                    {
-                        System.out.println(player);
-                    }
+                    tournamentManager.ExpressionLambdaOption2();
 
                     //Anonymous Class
-                    Arrays.sort(tournamentManager.getPlayers(), new Comparator<Player>() {
-                        @Override
-                        public int compare(Player p1, Player p2) {
-                            return p1.getName().compareTo(p2.getName());
-                        }
-                    });
-
-                    for (Player player : tournamentManager.getPlayers())
-                    {
-                        System.out.println(player);
-                    }
+                    tournamentManager.AnonymousExpressionOption2();
                     break;
                 case "3":
 
