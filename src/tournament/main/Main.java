@@ -92,7 +92,6 @@ public class Main
                     else {
                         System.out.println("Team not found");
                     }
-
                     break;
                 case "5":
                     Player p = new Player();
