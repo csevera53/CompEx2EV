@@ -198,6 +198,14 @@ public class TournamentManager {
         System.out.println("Updated");
     }
 
+    public void ExpressionLambdaOption1(){
+        Arrays.sort(tournaments, (t1,t2)->{
+            return t1.getName().compareTo(t2.getName());
+        });
+        for(Tournament tournament : tournaments){
+            System.out.println(tournament);
+        }
+    }
     public void ExpressionLambdaOption2()
     {
         Arrays.sort(players, (p1, p2) -> {
@@ -210,20 +218,11 @@ public class TournamentManager {
             System.out.println(player);
         }
     }
-
-    public void AnonymousExpressionOption2()
-    {
-        Arrays.sort(players, new Comparator<Player>() {
-            @Override
-            public int compare(Player p1, Player p2) {
-                int ranking = Float.compare(p1.getRanking(), p2.getRanking());
-                return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
-            }
-        });
-
-        for (Player player : players)
-        {
-            System.out.println(player);
+    public void ExpressionLambdaOption3(){
+        Arrays.sort(teams,(t1,t2)->
+                Float.compare(t2.getTotalRanking(), t1.getTotalRanking()));
+        for(Team team : teams){
+            System.out.println(team);
         }
     }
 
@@ -241,7 +240,44 @@ public class TournamentManager {
             System.out.println(match);
         }
     }
+    public void AnonymousClassOption1(){
+        Arrays.sort(tournaments, new Comparator<Tournament>() {
+            @Override
+            public int compare(Tournament t1, Tournament t2) {
+                return t1.getName().compareTo(t2.getName());
+            }
 
+        });
+        for(Tournament tour:tournaments){
+            System.out.println(tour);
+        }
+    }
+    public void AnonymousExpressionOption2()
+    {
+        Arrays.sort(players, new Comparator<Player>() {
+            @Override
+            public int compare(Player p1, Player p2) {
+                int ranking = Float.compare(p1.getRanking(), p2.getRanking());
+                return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
+            }
+        });
+
+        for (Player player : players)
+        {
+            System.out.println(player);
+        }
+    }
+    public void AnonymousClassOption3(){
+        Arrays.sort(teams,new Comparator<Team>() {
+            @Override
+            public int compare(Team t1, Team t2) {
+                return Float.compare(t2.getTotalRanking(), t1.getTotalRanking());
+            }
+        });
+        for(Team team : teams){
+            System.out.println(team);
+        }
+    }
     public void AnonymousClassOption8()
     {
         Arrays.sort(matches, new Comparator<Match>() {
@@ -256,4 +292,7 @@ public class TournamentManager {
             System.out.println(match);
         }
     }
+
+
+
 }
