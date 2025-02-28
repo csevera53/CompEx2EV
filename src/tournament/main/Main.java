@@ -2,7 +2,7 @@ package tournament.main;
 
 import tournament.exceptions.*;
 import java.util.Scanner;
-
+//Inés Perez, Carlos Severá, Sheila Rodríguez. 1ºDAW.
 public class Main
 {
     public static void Menu()
@@ -50,13 +50,13 @@ public class Main
                     break;
                 case "2":
                     //Comparator
-                    tournamentManager.OrderedPlayerInformationByRankigAndName();
+                    tournamentManager.orderedPlayerInformationByRankigAndName();
                     System.out.println();
                      //Lambda expression
-                    tournamentManager.ExpressionLambdaOption2();
+                    tournamentManager.expressionLambdaOption2();
                     System.out.println();
                     //Anonymous Class
-                    tournamentManager.AnonymousExpressionOption2();
+                    tournamentManager.anonymousExpressionOption2();
                     System.out.println();
                     break;
                 case "3":
@@ -91,19 +91,20 @@ public class Main
                     break;
                 case "8":
                     //Comparator
-                    tournamentManager.MatchedOrderedByTournamentName();
+                    tournamentManager.matchedOrderedByTournamentName();
                     System.out.println();
                     //Lambda expression
-                    tournamentManager.ExpressionLambdaOption8();
+                    tournamentManager.expressionLambdaOption8();
                     System.out.println();
                     //Anonymoys class
-                    tournamentManager.AnonymousClassOption8();
+                    tournamentManager.anonymousClassOption8();
                     break;
                 case "9":
                     tournamentManager.inputResult();
                     break;
                 case "10":
                     exit = true;
+                    System.out.println("Exit, bye!");
                     break;
                 default:
                     System.out.println("Incorrect option, try again : ");
