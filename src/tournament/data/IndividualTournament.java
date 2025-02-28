@@ -1,9 +1,7 @@
 package tournament.data;
 
-public class IndividualTournament extends Tournament
-{
-    public IndividualTournament(String name, String associatedGame, double prize)
-    {
+public class IndividualTournament extends Tournament {
+    public IndividualTournament(String name, String associatedGame, double prize) {
         super(name, associatedGame, prize);
     }
 

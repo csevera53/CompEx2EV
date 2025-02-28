@@ -53,7 +53,7 @@ public class TournamentManager {
                 10000,"1V1");
         tournaments[1] = new IndividualTournament("Rocket Premier",
                 "Rocket League",15000);
-        tournaments[2] = new TeamTournament("Rocketfeller","Rocket",
+        tournaments[2] = new TeamTournament("Rocketfeller","Rocket League",
                 12050,4);
 
         matches = new Match[12];
@@ -71,24 +71,12 @@ public class TournamentManager {
         matches[10] = new Match(tournaments[2],teams[2],teams[1]);
         matches[11] = new Match(tournaments[2],teams[0],teams[2]);
     }
-    public Player[] getPlayers(){
-        return players;
-    }
-    public Team[] getTeams(){
-        return teams;
-    }
-    public Tournament[] getTournaments(){
-        return tournaments;
-    }
-
     public Player findPlayer(String username){
         boolean found = false;
         String normalizedName = username.trim().toLowerCase();
 
-        for (Player player : players)
-        {
-            if (player.getName().toLowerCase().contains(normalizedName))
-            {
+        for (Player player : players) {
+            if (player.getName().toLowerCase().contains(normalizedName)) {
                 System.out.println(player);
                 found = true;
             }
@@ -99,19 +87,20 @@ public class TournamentManager {
     public Team findTeam(String teamName) {
 
         Team foundTeam = null;
-
-        for (Team t : teams)
-        {
-            if (t.getName().equals(teamName))
-            {
-                System.out.println("Team's name found");
-                System.out.println(t);
-                return t;
+        boolean teamFound = false;
+        for (Team t : teams) {
+            if (t.getName().equals(teamName)) {
+                teamFound = true;
+                foundTeam = t;
             }
+        }
 
-            else {
-                System.out.println("Team's name not found");
-            }
+        if(teamFound){
+            System.out.println("Team's name found");
+            System.out.println(foundTeam);
+        }
+        else{
+            System.out.println("Team not found");
         }
         return foundTeam;
     }
@@ -134,17 +123,14 @@ public class TournamentManager {
         }
     }
 
-    public void OrderedPlayerInformationByRankigAndName()
-    {
+    public void OrderedPlayerInformationByRankigAndName() {
         Arrays.sort(players, new PlayerComparatorByRanking());
-        for (Player p : players)
-        {
+        for (Player p : players) {
             System.out.println(p.toString());
         }
     }
 
-    public void MatchedOrderedByTournamentName()
-    {
+    public void MatchedOrderedByTournamentName() {
         Arrays.sort(matches, new Comparator<Match>() {
             @Override
             public int compare(Match m1, Match m2) {
@@ -154,8 +140,7 @@ public class TournamentManager {
 
         System.out.println("Matched ordered");
 
-        for (int i = 0; i < matches.length; i++)
-        {
+        for (int i = 0; i < matches.length; i++) {
             System.out.println(matches[i].toString());
         }
     }
@@ -165,21 +150,17 @@ public class TournamentManager {
             System.out.println(t);
         }
     }
-    public void inputResult()
-    {
+    public void inputResult() {
         Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < matches.length; i++)
-        {
-            if ("Pending".equals(matches[i].getResult()))
-            {
+        for (int i = 0; i < matches.length; i++) {
+            if ("Pending".equals(matches[i].getResult())) {
                 System.out.println((i + 1) +".-"+  matches[i].toString());
             }
         }
 
         int matchNumber = 0;
 
-        while(matchNumber < 1 || matchNumber > matches.length)
-        {
+        while(matchNumber < 1 || matchNumber > matches.length) {
             System.out.println("Select a match to update the result: ");
             String matchS = sc.nextLine();
             matchNumber = Integer.parseInt(matchS);
@@ -207,28 +188,28 @@ public class TournamentManager {
             System.out.println(tournament);
         }
     }
-    public void ExpressionLambdaOption2()
-    {
+    public void ExpressionLambdaOption2() {
         Arrays.sort(players, (p1, p2) -> {
             int ranking = Float.compare(p2.getRanking(), p1.getRanking());
             return ranking != 0 ? ranking : p1.getName().compareTo(p2.getName());
         });
 
-        for (Player player : players)
-        {
+        for (Player player : players) {
             System.out.println(player);
         }
     }
     public void ExpressionLambdaOption3(){
         Arrays.sort(teams,(t1,t2)->
                 Float.compare(t2.getTotalRanking(), t1.getTotalRanking()));
+
+        System.out.println();
+
         for(Team team : teams){
             System.out.println(team);
         }
     }
 
-    public void ExpressionLambdaOption8()
-    {
+    public void ExpressionLambdaOption8() {
         Arrays.sort(matches, new Comparator<Match>() {
             @Override
             public int compare(Match m1, Match m2) {
@@ -236,8 +217,7 @@ public class TournamentManager {
             }
         });
 
-        for (Match match : matches)
-        {
+        for (Match match : matches) {
             System.out.println(match);
         }
     }
@@ -253,8 +233,7 @@ public class TournamentManager {
             System.out.println(tour);
         }
     }
-    public void AnonymousExpressionOption2()
-    {
+    public void AnonymousExpressionOption2() {
         Arrays.sort(players, new Comparator<Player>() {
             @Override
             public int compare(Player p1, Player p2) {
@@ -275,12 +254,14 @@ public class TournamentManager {
                 return Float.compare(t2.getTotalRanking(), t1.getTotalRanking());
             }
         });
+
+        System.out.println();
+
         for(Team team : teams){
             System.out.println(team);
         }
     }
-    public void AnonymousClassOption8()
-    {
+    public void AnonymousClassOption8() {
         Arrays.sort(matches, new Comparator<Match>() {
             @Override
             public int compare(Match m1, Match m2) {
@@ -288,80 +269,65 @@ public class TournamentManager {
             }
         });
 
-        for (Match match : matches)
-        {
+        for (Match match : matches) {
             System.out.println(match);
         }
     }
 
-    //He hecho las excepciones pero no se implementarlas, dan errores
-    /*public void addPlayerToTeam(Team t) throws FullTeamException, Level1to100, MustBeFloat {
-        Scanner sc = new Scanner(System.in);
-        Player p;
-
-        System.out.println("Enter the name of the player:");
-        String name = sc.nextLine();
-
-
-        System.out.println("Enter the level :");
-        int level = sc.nextInt();
-
-        if(level>=1 && level<=100){
-            System.out.println("Enter the ranking :");
-            String number = sc.next();
-            boolean isFloat = false;
-
-            try{
-                float ranking = Float.parseFloat(number);
-                isFloat = true;
-
-                p = new Player(name, level, ranking);
-                //Falta añadir el jugador al array de jugadores
-                t.addPlayer(p);
-                System.out.println("Player added to the team correctly");
-            }
-            catch(MustBeFloat e) {
-                System.out.println("Must be float");
-            }
-        }
-        else{
-            throw new Level1to100("Error");
-        }
-
-    }*/
-
-    public void addNewPlayer()
-    {
+    public void addNewPlayer() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Player name: ");
         String playerName = sc.nextLine();
 
         System.out.println("Level: ");
-        int level = sc.nextInt();
+        int level = 0;
+        try{
+            level = sc.nextInt();
+        }catch(InputMismatchException e){
+            System.out.println("Number must be an integer");
+        }
 
-        System.out.println("Rankign: ");
-        float ranking = sc.nextFloat();
+        if (level < 1 || level > 100) {
+            try {
+                throw new Level1to100("El nivel debe estar entre 1 y 100.");
+            } catch (Level1to100 e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+        }
+        System.out.println("Ranking: ");
+        float ranking = 0;
+        try{
+            ranking = sc.nextFloat();
+        }catch(InputMismatchException e){
+            System.out.println("Ranking must be a float");
+        }
 
         sc.nextLine();
 
-        Player newPlayer = new Player(playerName, level, ranking);
+        if (level != 0 && ranking != 0) {
+            Player newPlayer = new Player(playerName, level, ranking);
 
-        System.out.println("Enter team name: ");
-        String team = sc.nextLine();
+            System.out.println("Enter team name: ");
+            String team = sc.nextLine();
 
-        Team t = findTeam(team);
+            Team t = findTeam(team);
 
-        if (t == null)
-        {
-            System.out.println("Team not found");
+            if (t == null) {
+                System.out.println("Team not found");
+            }
+            else {
+                try {
+                    t.addPlayer(newPlayer);
+                    System.out.println("Player added");
+                } catch (FullTeamException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
-
-        try{
-            t.addPlayer(newPlayer);
-            System.out.println("Player added");
-        }catch (FullTeamException e){
-            System.out.println(e.getMessage());
+        else{
+            System.out.println("The player could not be added");
         }
     }
 }

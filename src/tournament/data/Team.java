@@ -2,9 +2,6 @@ package tournament.data;
 
 import tournament.exceptions.*;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public class Team extends Participant {
     private Player [] players;
     private int playersInTeam;
@@ -28,30 +25,11 @@ public class Team extends Participant {
         }
     }
 
-
-    /*public Team() {
-        super();
-        name = " ";
-        players = new Player[5];
-    }*/
-
     public Player[] getPlayers() {
         return players;
     }
-    public void setPlayers(Player[] players) {
-        this.players = players;
-    }
 
     public void addPlayer(Player p) throws FullTeamException {
-        /*if(playersInTeam < MAX_PLAYERS){
-            players[playersInTeam] = p;
-            playersInTeam++;
-
-        }
-        else {
-            throw new FullTeamException("Can't add player, the team is full");
-        }*/
-
         if (playersInTeam >= MAX_PLAYERS)
         {
             throw new FullTeamException("Team is full");
@@ -59,7 +37,8 @@ public class Team extends Participant {
 
         players[playersInTeam++] = p;
     }
-    //Total ranking para el team Comparator
+
+    //Total ranking for the team Comparator
     public float getTotalRanking(){
         float total = 0;
         for(Player player : getPlayers()){
@@ -68,6 +47,7 @@ public class Team extends Participant {
             }
         }
         total /= players.length;
+        System.out.println(name + " average ranking = " + total);
         return total;
     }
     @Override

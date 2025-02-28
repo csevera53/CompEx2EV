@@ -1,9 +1,6 @@
 package tournament.main;
 
-import tournament.data.*;
 import tournament.exceptions.*;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main
@@ -22,7 +19,7 @@ public class Main
                     9.-Update the result of the matches pending
                     10.-Exit""");
     }
-    public static void main(String[] args) throws FullTeamException, Level1to100,MustBeFloat {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
 
         TournamentManager tournamentManager = new TournamentManager();
@@ -33,8 +30,7 @@ public class Main
 
         boolean exit = false;
 
-        while(!exit)
-        {
+        while(!exit) {
             Menu();
 
             System.out.println("Enter an option : ");
@@ -42,7 +38,6 @@ public class Main
 
             switch (option) {
                 case "1":
-
                     //Comparator
                     tournamentManager.OrderTournamentsByName();
                     System.out.println();
@@ -76,26 +71,6 @@ public class Main
                     System.out.println();
                     break;
                 case "4":
-                    /*Team t = new Team();
-                    boolean teamFound = false;
-                    int position = 0;
-                    System.out.print("In which team do you want to add the player? ");
-                    String name = sc.nextLine();
-
-                    for(Team team : tournamentManager.getTeams()){
-                        if(team.getName().equals(name)){
-                            teamFound = true;
-                            t.setName(t.getName());
-                            t.setPlayers(team.getPlayers());
-                        }
-                    }
-
-                    if(teamFound){
-                        tournamentManager.addPlayerToTeam(t);
-                    }
-                    else {
-                        System.out.println("Team not found");
-                    }*/
                     tournamentManager.addNewPlayer();
                     break;
                 case "5":

@@ -1,16 +1,7 @@
 package tournament.data;
 
-public class MixedTournament extends Tournament
-{
+public class MixedTournament extends Tournament {
     String gameMode;
-
-    public String getGameMode() {
-        return gameMode;
-    }
-
-    public void setGameMode(String gameMode) {
-        this.gameMode = gameMode;
-    }
 
     public MixedTournament(String name, String associatedGame,
                            double prize,String gameMode) {
@@ -20,6 +11,6 @@ public class MixedTournament extends Tournament
 
     @Override
     public String toString() {
-        return "- Mixed " + super.toString() + "gameMode " + gameMode;
+        return "Mixed " + super.toString() + "gameMode " + gameMode;
     }
 }

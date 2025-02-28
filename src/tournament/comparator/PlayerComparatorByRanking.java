@@ -2,7 +2,6 @@ package tournament.comparator;
 
 import tournament.data.Player;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class PlayerComparatorByRanking implements Comparator<Player> {
@@ -15,8 +14,5 @@ public class PlayerComparatorByRanking implements Comparator<Player> {
             return rankingNumber;
         }
         return p1.getName().compareTo(p2.getName());
-    }
-    public static void sortByRanking(Player[] players) {
-        Arrays.sort(players,new PlayerComparatorByRanking());
     }
 }
